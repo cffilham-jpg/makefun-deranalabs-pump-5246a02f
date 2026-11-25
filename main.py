@@ -11,6 +11,8 @@ CHAR_LIMIT = 200
 def validate(text):
     if not text.strip():
         raise ValueError("Hype line must not be empty or whitespace-only.")
+    if "\n" in text or "\r" in text:
+        raise ValueError("Hype line must not contain newline or carriage-return characters.")
     if len(text) > CHAR_LIMIT:
         raise ValueError(f"Hype line must be at most {CHAR_LIMIT} characters.")
 
